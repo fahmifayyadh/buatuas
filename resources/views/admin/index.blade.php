@@ -1,4 +1,4 @@
-@include('layouts.navadmin')
+@include('layouts/navadmin')
 
 @section('content')
     <div class="container">

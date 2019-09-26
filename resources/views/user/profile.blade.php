@@ -6,9 +6,6 @@
         <div class="card ">
             <div class="">
                 <img src="{{asset('img/user.png')}}" class="rounded-circle w-25 p-4">
-                <div class="bg-dark rounded-circle" style="width: 50px">
-                    <a href=""><img src="{{asset('img/edit.png')}}" style="height: 50px" class="p-2"></a>
-                </div>
             </div>
             <table>
                 <tr>
@@ -17,19 +14,39 @@
                     <td>{{$users->name}}</td>
                 </tr>
                 <tr>
-                    <td class="font-weight-bold">Email</td>
+                    <td>Phone Number</td>
                     <td> :</td>
-                    <td>{{$users->email}}</td>
+                    <td>{{ $users->phone_number }}</td>
+                </tr>
+                <tr>
+                    <td>Birth</td>
+                    <td> :</td>
+                    <td>{{$users->birth_address}}, {{$users->birth_date}}</td>
                 </tr>
                 <tr>
                     <td>Address</td>
                     <td> :</td>
-                    <td>null</td>
+                    <td>{{$users->address}}</td>
                 </tr>
                 <tr>
-                    <td>Last Study</td>
+                    <td>Hobby</td>
                     <td> :</td>
-                    <td>null</td>
+                    <td>{{$users->hobby}}</td>
+                </tr>
+                <tr>
+                    <td>Skill</td>
+                    <td> :</td>
+                    <td>{{$users->skill}}</td>
+                </tr>
+                <tr>
+                    <td>Experience</td>
+                    <td> :</td>
+                    <td>{{ $users->experience }}</td>
+                </tr>
+                <tr>
+                    <td>Overview</td>
+                    <td> :</td>
+                    <td>{{ $users->overview }}</td>
                 </tr>
                 <tr>
                     <td>Find me at</td>
@@ -42,6 +59,7 @@
                     </td>
                 </tr>
             </table>
+            <a href="/profile/{{$users->id}}/edit" class="btn btn-warning m-3">Edit profile</a>
         </div>
     </div>
     {{ dd($users) }}

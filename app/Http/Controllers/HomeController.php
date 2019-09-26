@@ -30,4 +30,15 @@ class HomeController extends Controller
         $users = \App\Profile::find($id);
         return view('user.profile',['users'=>$users]);
     }
+
+    public function edit($id){
+        $users = \App\Profile::find($id);
+        return view('user.edit_Profile',['users'=>$users]);
+    }
+
+    public function update(Request $request, $id){
+        $users = \App\Profile::find($id);
+        $users->update($request->all());
+        return redirect('/profile/{id}',['users'=>$users]) ->with('sukses', 'data berhasil diupdate');
+    }
 }

@@ -29,3 +29,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin','AdminController@index');
 Route::get('/admin/{id}/suspand', 'AdminController@suspand');
 Route::get('/profile/{id}', 'HomeController@profile');
+Route::get('/profile/{id}/edit', 'HomeController@edit');
+Route::post('/profile/{id}/update','HomeController@update');
