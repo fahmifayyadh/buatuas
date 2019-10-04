@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\PostContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //
     }
 
     public function profile($id){
@@ -36,9 +38,4 @@ class HomeController extends Controller
         return view('user.edit_Profile',['users'=>$users]);
     }
 
-    public function update(Request $request, $id){
-        $users = \App\Profile::find($id);
-        $users->update($request->all());
-        return redirect('/profile/{id}',['users'=>$users]) ->with('sukses', 'data berhasil diupdate');
-    }
 }

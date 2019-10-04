@@ -4,7 +4,7 @@
     <div class="container">
         <div class=" mt-4 ">
                     <h5 class="position-static">USER ACCOUNT CREATOR</h5>
-                    {{--            tabel--}}
+                                tabel
                     <table class="table">
                         <thead class="thead-dark">
                         <tr>
