@@ -17,4 +17,9 @@ class PostController extends Controller
 //        $posts = PostContent::orderBy('created_at','desc')->get();
         return view('user.home', compact('posts'));
     }
+
+    public function like(Request $request){
+        $postid = $request['postId'];
+        $is_like = $request['isLike'] === 'true';
+    }
 }

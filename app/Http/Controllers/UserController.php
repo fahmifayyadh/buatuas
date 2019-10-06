@@ -88,8 +88,8 @@ class UserController extends Controller
             'experience'=>$request->experience,
             'overview'=>$request->overview
         ]);
-//
-        return redirect('/profile/{id}', ['users'=>$users]) ->with('sukses', 'data berhasil diupdate');
+        $users = \App\Profile::find($id);
+        return view('profile/{id}', ['users'=>$users])->with('sukses', 'data berhasil diupdate');
     }
 
     /**

@@ -31,3 +31,5 @@ Route::get('/admin/{id}/suspand', 'AdminController@suspand');
 Route::get('/profile/{id}', 'HomeController@profile');
 Route::get('/profile/{id}/edit', 'HomeController@edit');
 Route::post('/profile/{id}/update','UserController@update');
+
+Route::post('/home/like', 'PostController@like');
