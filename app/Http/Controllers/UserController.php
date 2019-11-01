@@ -69,14 +69,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $users = \App\Profile::find($id);
-//        \App\Profile::create($request->all());
-
-
-//        $users->update($request->all());
-//        return redirect('/profile/{id}',['users'=>$users]) ->with('sukses', 'data berhasil diupdate');
-
-//        return "form submit";
         DB::table('users')->where('id',$id)->update([
             'name'=> $request->name,
             'phone_number'=>$request->phone_number,
@@ -89,7 +81,7 @@ class UserController extends Controller
             'overview'=>$request->overview
         ]);
         $users = \App\Profile::find($id);
-        return view('profile/{id}', ['users'=>$users])->with('sukses', 'data berhasil diupdate');
+        return view('user.profile', ['users'=>$users])->with('sukses', 'data berhasil diupdate');
     }
 
     /**

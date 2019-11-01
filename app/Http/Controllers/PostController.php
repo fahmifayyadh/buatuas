@@ -18,8 +18,28 @@ class PostController extends Controller
         return view('user.home', compact('posts'));
     }
 
-    public function like(Request $request){
-        $postid = $request['postId'];
-        $is_like = $request['isLike'] === 'true';
+    public function like(Request $request, $id){
+        DB::table('likes')->where('post')
     }
+
+    public function PostContent( Request $request){
+        DB::table('post_contents')->insert([
+            'TITLE'=> $request->TITLE,
+            'platfotm'=>$request->platform,
+            'Descripstion'=>$request->Description,
+            'photo1'=>$request->photo1,
+            'photo2'=>$request->photo2,
+            'photo3'=>$request->photo3,
+            'photo4'=>$request->photo4,
+            'link_project'=>$request->link_project,
+            'created_at'=>$request->created_at,
+            'user_id'=>$request->user_id,
+        ]);
+        return view('/home')->with('sukses', 'data berhasil diupload');
+    }
+
+    public function addpost (){
+        return view('user.post.post_content');
+    }
+
 }

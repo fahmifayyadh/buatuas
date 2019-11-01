@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <a href="/project">
+        <a href="/home/addpost">
             <button class="btn btn-primary">Add Content</button>
         </a>
 
@@ -11,8 +11,13 @@
                     <div class="col-3 float-left">
                         <div class="card mt-2">
                             <article class="post" data-postid="{{ $post->id }}">
-                            <a class="mt-2 mb-2 float-left"><img src="{{asset('img/user.png')}}" class="col-1"> <font
-                                    class="float-left">{{ $post->name }}</font></a>
+                            <a class="mt-2 mb-2 float-left" href="/profile/{{ $post->user_id }}">
+                                @if($post->pic==null)
+                                <img src="{{asset('img/user.png')}}" class="col-3 float-left">
+                                @else
+                                    <img src="{{ $post->pic }}" class="col-3 float-left">
+                                @endif
+                                <font class="float-left">{{ $post->name }}</font></a>
                             <img
                                 src="https://cdn.dribbble.com/users/1464232/screenshots/7177467/media/def28a35750bf9ec1eeae73af4bfddc9.png"
                                 class="card-img-top" alt="Image Error">
@@ -31,7 +36,7 @@
                                     <a href="#">Delete</a>
                                 @endif
                                 <img src="{{asset('img/comment.png')}}" class="col-md-1">
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Download</a>
                             </div>
                             </article>
                         </div>

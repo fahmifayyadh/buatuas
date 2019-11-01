@@ -32,4 +32,6 @@ Route::get('/profile/{id}', 'HomeController@profile');
 Route::get('/profile/{id}/edit', 'HomeController@edit');
 Route::post('/profile/{id}/update','UserController@update');
 
+Route::get('/home/addpost', 'postController@addpost');
+Route::post('/postcontent', 'PostController@PostContent');
 Route::post('/home/like', 'PostController@like');

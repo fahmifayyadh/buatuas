@@ -12,5 +12,4 @@ $('.like').on('click', function (event) {
     .done(function () {
         //
     });
-    console.log(response);
 });
