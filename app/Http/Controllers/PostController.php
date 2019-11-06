@@ -19,7 +19,7 @@ class PostController extends Controller
     }
 
     public function like(Request $request, $id){
-        DB::table('likes')->where('post')
+        DB::table('likes')->where('post');
     }
 
     public function PostContent( Request $request){
@@ -41,5 +41,4 @@ class PostController extends Controller
     public function addpost (){
         return view('user.post.post_content');
     }
-
 }
