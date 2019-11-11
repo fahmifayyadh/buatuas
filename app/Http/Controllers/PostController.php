@@ -14,6 +14,9 @@ class PostController extends Controller
                 ->join('post_contents','users.id','=','post_contents.user_id')
 
                 ->get();
+        $storage = \App\storage::select('*')
+            ->join('storages','users.id','=','storages.user_id')
+            ->get();
 //        $posts = PostContent::orderBy('created_at','desc')->get();
         return view('user.home', compact('posts'));
     }

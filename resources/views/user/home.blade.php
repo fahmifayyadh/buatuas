@@ -1,11 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <a href="/home/addpost">
-            <button class="btn btn-primary">Add Content</button>
-        </a>
+    <a href="/home/addpost">
+        <button class="btn btn-primary">Add Content</button>
+    </a>
 
+    <div class="col-md-2 float-left mb-3">
+        <div class="card">
+            <div class="card-header">
+                STORAGE
+            </div>
+            <div class="card-body">
+                Memori yang digunakan
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                    <b class="ml-2 position-absolute">100%</b>
+                </div>
+                <p class="bg-danger ml-4 mr-4 text-center mt-2 progress-bar">Penuh</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
         <div class="row justify-content-sm-center">
             @foreach($posts as $post)
                     <div class="col-3 float-left">
