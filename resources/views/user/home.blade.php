@@ -8,15 +8,32 @@
     <div class="col-md-2 float-left mb-3">
         <div class="card">
             <div class="card-header">
-                STORAGE
-            </div>
-            <div class="card-body">
+                <h4 class="text-center"><b>STORAGE</b></h4>
                 Memori yang digunakan
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                     <b class="ml-2 position-absolute">100%</b>
                 </div>
                 <p class="bg-danger ml-4 mr-4 text-center mt-2 progress-bar">Penuh</p>
+            </div>
+            <div class="card-body">
+
+                <p>memori total yang anda miliki sebesar : <b>x</b></p>
+                <p>memori yang digunakan sebesar : <b>x</b> </p>
+
+
+            </div>
+            <div class="card-footer">
+                <b>STATUS :</b>
+                @if($storage->status==vvip)
+                    <button type="button" class="btn btn-warning btn-sm active">VVIP Storage</button>
+                    @elseif($storage->status==vip)
+                        <button type="button" class="btn btn-danger btn-sm active">VIP Storage</button>
+                    @else
+                        <button type="button" class="btn btn-primary btn-sm active">FREE Storage</button>
+                    @endif
+
+
             </div>
         </div>
     </div>

@@ -5,20 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\like;
 use App\PostContent;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     public function index(){
+        $id = Auth::user()->id;
         $posts = \App\User::select('*')
                 ->join('post_contents','users.id','=','post_contents.user_id')
 
+
                 ->get();
         $storage = \App\storage::select('*')
-            ->join('storages','users.id','=','storages.user_id')
-            ->get();
-//        $posts = PostContent::orderBy('created_at','desc')->get();
-        return view('user.home', compact('posts'));
+                    -> join('storages','users.id','=','storages.user_id')
+                    ->where('id',$id)
+                    ->get();
+
+        return view('user.home', compact('posts','storage'));
     }
 
     public function like(Request $request, $id){
