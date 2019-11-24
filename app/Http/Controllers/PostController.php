@@ -14,15 +14,24 @@ class PostController extends Controller
         $id = Auth::user()->id;
         $posts = \App\User::select('*')
                 ->join('post_contents','users.id','=','post_contents.user_id')
-
-
                 ->get();
-        $storage = \App\storage::select('*')
-                    -> join('storages','users.id','=','storages.user_id')
-                    ->where('id',$id)
-                    ->get();
 
-        return view('user.home', compact('posts','storage'));
+        $user= \App\User::where('id','=',$id)->first();
+
+        $maxstorage = $user->Storage->storage;
+
+        $sumstorage = Auth::user()->PostContent->sum('file_size');
+
+        $diffstorage = (float)$sumstorage/$maxstorage;
+
+
+
+        return view('user.home')
+            ->with('posts', $posts)
+            ->with('user', $user)
+            ->with('maxstorage', $maxstorage)
+            ->with('sumstorage', $sumstorage)
+            ->with('diffstorage', $diffstorage);
     }
 
     public function like(Request $request, $id){

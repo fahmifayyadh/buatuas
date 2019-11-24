@@ -32,7 +32,10 @@ class User extends Authenticatable
         $this->hasMany('App\like');
     }
     public function PostContent(){
-        $this->hasMany('App\PostContent');
+         return $this->hasMany('App\PostContent');
+    }
+    public function Storage(){
+        return $this->hasOne('App\storage');
     }
     /**
      * The attributes that should be cast to native types.

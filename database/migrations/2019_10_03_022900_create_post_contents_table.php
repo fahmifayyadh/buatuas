@@ -25,6 +25,7 @@ class CreatePostContentsTable extends Migration
             $table->string('link_project');
             $table->timestamps();
             $table->integer('user_id');  //table user, id pembuat content
+            $table->integer('file_size');
         });
     }
 

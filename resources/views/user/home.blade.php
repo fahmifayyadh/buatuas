@@ -11,27 +11,43 @@
                 <h4 class="text-center"><b>STORAGE</b></h4>
                 Memori yang digunakan
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-                    <b class="ml-2 position-absolute">100%</b>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ $diffstorage*100 }}%"></div>
+                    <b class="ml-2 position-absolute">{{ $diffstorage*100 }}%</b>
                 </div>
-                <p class="bg-danger ml-4 mr-4 text-center mt-2 progress-bar">Penuh</p>
+{{--                0,2--}}
+                @if($diffstorage<0.2)
+                    <p class="btn-light ml-4 mr-4 text-center mt-2 active">Penyimpanan kosong</p>
+{{--                    0.4--}}
+                @elseif($diffstorage <0.4)
+                    <p class="btn-success ml-4 mr-4 text-center mt-2 active">Penyimpanan terisi</p>
+{{--                0.9--}}
+                @elseif($diffstorage<0.9)
+                    <p class="btn-warning ml-4 mr-4 text-center mt-2 active">hampir penuh</p>
+{{--                else--}}
+                @else
+                    <p class="btn-danger ml-4 mr-4 text-center mt-2 active">Penyimpanan habis</p>
+                @endif
+
             </div>
             <div class="card-body">
 
-                <p>memori total yang anda miliki sebesar : <b>x</b></p>
-                <p>memori yang digunakan sebesar : <b>x</b> </p>
+                <p>memori total yang anda miliki sebesar : <b>{{ $maxstorage }} Mb </b></p>
+                <p>memori yang digunakan sebesar :
+                    <b>{{ $sumstorage }} Mb</b>
+                </p>
 
 
             </div>
             <div class="card-footer">
                 <b>STATUS :</b>
-                @if($storage->status==vvip)
-                    <button type="button" class="btn btn-warning btn-sm active">VVIP Storage</button>
-                    @elseif($storage->status==vip)
-                        <button type="button" class="btn btn-danger btn-sm active">VIP Storage</button>
-                    @else
-                        <button type="button" class="btn btn-primary btn-sm active">FREE Storage</button>
-                    @endif
+                @if($user->Storage->status=='vvip')
+                    <button type="button" class="btn btn-warning btn-sm ml-2 active">VVIP Storage</button>
+                @elseif($user->Storage->status=='vip')
+                    <button type="button" class="btn btn-danger btn-sm ml-2 active">VIP Storage</button>
+                @else
+                    <button type="button" class="btn btn-primary btn-sm ml-2 active">FREE Storage</button>
+                @endif
 
 
             </div>
@@ -41,14 +57,14 @@
     <div class="container">
         <div class="row justify-content-sm-center">
             @foreach($posts as $post)
-                    <div class="col-3 float-left">
-                        <div class="card mt-2">
-                            <article class="post" data-postid="{{ $post->id }}">
+                <div class="col-3 float-left">
+                    <div class="card mt-2">
+                        <article class="post" data-postid="{{ $post->id }}">
                             <a class="mt-2 mb-2 float-left" href="/profile/{{ $post->user_id }}">
                                 @if($post->pic==null)
-                                <img src="{{asset('img/user.png')}}" class="col-3 float-left">
+                                    <img src="{{asset('img/user.png')}}" class="col-3 float-left rounded-circle">
                                 @else
-                                    <img src="{{ $post->pic }}" class="col-3 float-left">
+                                    <img src="{{ $post->pic }}" class="col-3 float-left rounded-circle">
                                 @endif
                                 <font class="float-left">{{ $post->name }}</font></a>
                             <img
@@ -71,9 +87,9 @@
                                 <img src="{{asset('img/comment.png')}}" class="col-md-1">
                                 <a href="#" class="btn btn-primary">Download</a>
                             </div>
-                            </article>
-                        </div>
+                        </article>
                     </div>
+                </div>
             @endforeach
         </div>
     </div>
