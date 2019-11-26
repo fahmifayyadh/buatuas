@@ -7,10 +7,10 @@
     <div class="col-md-2 float-left mb-3">
         <div class="card">
             <div class="card-header">
-                @if($id == \App\storage::get($id))
+
                     <p>aktifkan storage terlebih dahulu untuk memulai upload file project</p>
                     <button class="btn btn-primary">Aktifkan</button>
-                @else
+
                     <h4 class="text-center"><b>STORAGE</b></h4>
                     Memori yang digunakan
                     <div class="progress">
@@ -32,7 +32,7 @@
                     @else
                         <p class="btn-danger ml-4 mr-4 text-center mt-2 active">Penyimpanan habis</p>
                     @endif
-                @endif
+
             </div>
             <div class="card-body">
 
