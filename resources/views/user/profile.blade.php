@@ -1,11 +1,14 @@
-@include('layouts.app')
-
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <h3 class="align-content-center">PROFILE</h3>
         <div class="card ">
             <div class="">
-                <img src="{{asset('img/user.png')}}" class="rounded-circle w-25 p-4">
+                @if($users->pic==null)
+                    <img src="{{asset('img/user.png')}}" class="rounded-circle w-25 p-4">
+                @else
+                    <img src="{{ $users->pic }}" class="rounded-circle w-25 p-4">
+                @endif
             </div>
             <table>
                 <tr>
@@ -62,5 +65,4 @@
             <a href="/profile/{{$users->id}}/edit" class="btn btn-warning m-3">Edit profile</a>
         </div>
     </div>
-    {{ dd($users) }}
 @endsection

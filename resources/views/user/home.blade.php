@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <a href="/home/addpost">
         <button class="btn btn-primary">Add Content</button>
@@ -8,27 +7,32 @@
     <div class="col-md-2 float-left mb-3">
         <div class="card">
             <div class="card-header">
-                <h4 class="text-center"><b>STORAGE</b></h4>
-                Memori yang digunakan
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ $diffstorage*100 }}%"></div>
-                    <b class="ml-2 position-absolute">{{ $diffstorage*100 }}%</b>
-                </div>
-{{--                0,2--}}
-                @if($diffstorage<0.2)
-                    <p class="btn-light ml-4 mr-4 text-center mt-2 active">Penyimpanan kosong</p>
-{{--                    0.4--}}
-                @elseif($diffstorage <0.4)
-                    <p class="btn-success ml-4 mr-4 text-center mt-2 active">Penyimpanan terisi</p>
-{{--                0.9--}}
-                @elseif($diffstorage<0.9)
-                    <p class="btn-warning ml-4 mr-4 text-center mt-2 active">hampir penuh</p>
-{{--                else--}}
+                @if($id == \App\storage::get($id))
+                    <p>aktifkan storage terlebih dahulu untuk memulai upload file project</p>
+                    <button class="btn btn-primary">Aktifkan</button>
                 @else
-                    <p class="btn-danger ml-4 mr-4 text-center mt-2 active">Penyimpanan habis</p>
+                    <h4 class="text-center"><b>STORAGE</b></h4>
+                    Memori yang digunakan
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                             style="width: {{ $diffstorage*100 }}%"></div>
+                        <b class="ml-2 position-absolute">{{ $diffstorage*100 }}%</b>
+                    </div>
+                    {{--                0,2--}}
+                    @if($diffstorage<0.2)
+                        <p class="btn-light ml-4 mr-4 text-center mt-2 active">Penyimpanan kosong</p>
+                        {{--                    0.4--}}
+                    @elseif($diffstorage <0.4)
+                        <p class="btn-success ml-4 mr-4 text-center mt-2 active">Penyimpanan terisi</p>
+                        {{--                0.9--}}
+                    @elseif($diffstorage<0.9)
+                        <p class="btn-warning ml-4 mr-4 text-center mt-2 active">hampir penuh</p>
+                        {{--                else--}}
+                    @else
+                        <p class="btn-danger ml-4 mr-4 text-center mt-2 active">Penyimpanan habis</p>
+                    @endif
                 @endif
-
             </div>
             <div class="card-body">
 

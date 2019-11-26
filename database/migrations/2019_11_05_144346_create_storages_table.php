@@ -15,9 +15,9 @@ class CreateStoragesTable extends Migration
     {
         Schema::create('storages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('storage');
-            $table->string('user');
-            $table->string('status');
+            $table->integer('storage')->default('100000');
+            $table->string('user_id');
+            $table->string('status')->default('free');
             $table->timestamps();
         });
     }

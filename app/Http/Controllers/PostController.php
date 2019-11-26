@@ -11,27 +11,33 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     public function index(){
-        $id = Auth::user()->id;
-        $posts = \App\User::select('*')
+
+            $id = Auth::user()->id;
+            $posts = \App\User::select('*')
                 ->join('post_contents','users.id','=','post_contents.user_id')
                 ->get();
 
-        $user= \App\User::where('id','=',$id)->first();
+            $user= \App\User::where('id','=',$id)->first();
 
-        $maxstorage = $user->Storage->storage;
+            $nullstorage = $user->Storage->user_id;
 
-        $sumstorage = Auth::user()->PostContent->sum('file_size');
+            $maxstorage = $user->Storage->storage;
 
-        $diffstorage = (float)$sumstorage/$maxstorage;
+            $sumstorage = Auth::user()->PostContent->sum('file_size');
 
+            $diffstorage = (float)$sumstorage/$maxstorage;
+
+            if ($id == $user->Storage->user_id)
 
 
         return view('user.home')
+            ->with('id', $id)
             ->with('posts', $posts)
             ->with('user', $user)
             ->with('maxstorage', $maxstorage)
             ->with('sumstorage', $sumstorage)
-            ->with('diffstorage', $diffstorage);
+            ->with('diffstorage', $diffstorage)
+            ->with('nullstorage', $nullstorage);
     }
 
     public function like(Request $request, $id){

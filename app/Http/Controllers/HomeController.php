@@ -30,7 +30,8 @@ class HomeController extends Controller
 
     public function profile($id){
         $users = \App\Profile::find($id);
-        return view('user.profile',['users'=>$users]);
+        return view('user.profile')
+            ->with('users', $users);
     }
 
     public function edit($id){
