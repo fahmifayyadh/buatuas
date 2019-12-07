@@ -23,6 +23,8 @@ Route::get('/regist', 'PagesController@regist');
 
 route::get('/beranda', 'HomeController@index');
 
+Route::post('/registers','UserController@create');
+
 Auth::routes();
 
 Route::get('/home', 'PostController@index')->name('home');
@@ -35,3 +37,4 @@ Route::post('/profile/{id}/update','UserController@update');
 Route::get('/home/addpost', 'postController@addpost');
 Route::post('/postcontent', 'PostController@PostContent');
 Route::post('/home/like', 'PostController@like');
+Route::get('/home/addstorage', 'StorageController@addStorage');

@@ -8,9 +8,6 @@
         <div class="card">
             <div class="card-header">
 
-                    <p>aktifkan storage terlebih dahulu untuk memulai upload file project</p>
-                    <button class="btn btn-primary">Aktifkan</button>
-
                     <h4 class="text-center"><b>STORAGE</b></h4>
                     Memori yang digunakan
                     <div class="progress">
@@ -33,6 +30,7 @@
                         <p class="btn-danger ml-4 mr-4 text-center mt-2 active">Penyimpanan habis</p>
                     @endif
 
+
             </div>
             <div class="card-body">
 
@@ -41,8 +39,8 @@
                     <b>{{ $sumstorage }} Mb</b>
                 </p>
 
-
             </div>
+
             <div class="card-footer">
                 <b>STATUS :</b>
                 @if($user->Storage->status=='vvip')

@@ -22,9 +22,29 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
-        //
+        $cek = \App\User::where('email',$req->email)->first();
+        if (!empty($cek)){
+            return redirect()->back()
+                ->with('status','email sudah pernah digunakan, gunakan email lain.');
+        }else {
+
+            $z = new \App\User;
+            $z->id = mt_rand(1000, 9999);
+            \App\storage::create([
+                'id' => mt_rand(1000, 9999),
+                'user_id' => $z->id,
+                'storage' => 100000,
+                'status' => 'free',
+            ]);
+            $z->name = $req->name;
+            $z->email = $req->email;
+            $z->password = bcrypt($req->password);
+            $z->save();
+
+            return redirect('/login');
+        }
     }
 
     /**

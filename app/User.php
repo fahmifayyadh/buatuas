@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     public function likes(){
-        $this->hasMany('App\like');
+        return $this->hasMany('App\like');
     }
     public function PostContent(){
          return $this->hasMany('App\PostContent');

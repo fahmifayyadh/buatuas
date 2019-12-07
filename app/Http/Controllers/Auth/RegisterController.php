@@ -64,13 +64,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+//        return User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'password' => Hash::make($data['password']),
+//        ]);
 //        $id = Auth::user();
 //        $storage = DB::table('storages')->insert([
 //            'user_id'=> $data[$id],
@@ -78,20 +78,20 @@ class RegisterController extends Controller
 //            'status' =>$data['status'],
 //        ]);
 
-//        $user = new \App\User;
-//        $user->id = mt_rand(10,9999);
-//        $user->name = $data['name'];
-//        $user->email = $data['email'];
-//        $user->pass = bcrypt($data['password']);
-//
-//        \App\storage::create([
-//            'user_id' => $user->id,
-//            'storage' => $user->Storage->storage,
-//            'status'  => $data['status'],
-//        ]);
-//        $user->save();
+        $user = new \App\User;
+        $user->id = mt_rand(10,9999);
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = bcrypt($data->password);
 
-//        return compact('user');
+        \App\storage::create([
+            'user_id' => $user->id,
+            'storage' => 100000,
+            'status'  => 'free',
+        ]);
+        $user->save();
+
+        return redirect('/home');
     }
 
 }
