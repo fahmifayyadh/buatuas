@@ -2,8 +2,8 @@
 
 @section('content')
     <div class = 'container'>
-        <form method="post" action="/postcontent">
-            @csrf
+        <form enctype="multipart/form-data" method="POST" action="/postcontent">
+            {{ csrf_field() }}
 {{--            title--}}
                 <input type="text" name="TITLE" placeholder="Judul Project" class="form-control mb-1">
 

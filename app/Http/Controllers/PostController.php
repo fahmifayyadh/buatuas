@@ -59,67 +59,69 @@ class PostController extends Controller
 //        NAMA FOLDER PROJECT
         $folder = 'file';
 
-        // nama file yang disimpan ke folder public
-        $file = time() . "_" . $project;
-
-        // pindah file dari form ke folder laravel
-        $project->move($folder, $file);
-
-
-//        NAMA FOLDER FOTO
-        $foto = 'photoproject';
-
-//        FOTO PERTAMA
-        $photo1 = $request->file('photo1');
+        dd($project);
 //        // nama file yang disimpan ke folder public
-        $poto1 = time() . "_" . $photo1->getClientOriginalName();
-
-//        // pindah file dari form ke folder laravel
-        $photo1->move($foto, $poto1);
-
-
-//        FOTO KEDUA
-        $photo2 = $request->file('photo2');
-        // nama file yang disimpan ke folder public
-        $poto2 = time() . "_" . $photo2->getClientOriginalName();
-
-//        // pindah file dari form ke folder laravel
-        $photo2->move($foto, $poto2);
-
-
-//        FOTOKETIGA
-        $photo3 = $request->file('photo3');
-        // nama file yang disimpan ke folder public
-        $poto3 = time() . "_" . $photo3->getClientOriginalName();
-
-//        // pindah file dari form ke folder laravel
-        $photo3->move($foto, $poto3);
-
-//        FOTO KEEMPAT
-        $photo4 = $request->file('photo4');
-//        nama file yang disimpan ke folder public
-        $poto4 = time() . "_" . $photo4->getClientOriginalName();
+//        $file = time() . "_" . $project->getClientOriginalName();
 //
-//        pindah file dari form ke folder laravel
-        $photo4->move($foto, $poto4);
-
-
-
-
-        $id = Auth::user();
-        DB::table('post_contents')->insert([
-            'TITLE' => $request->TITLE,
-            'platfotm' => $request->platform,
-            'Descripstion' => $request->Description,
-            'photo1' => $poto1,
-            'photo2' => $poto2,
-            'photo3' => $poto3,
-            'photo4' => $poto4,
-            'link_project'=> $file,
-            'user_id' => $id->id,
-            'file_size' => $file->getSize(),
-        ]);
-        return view('/home')->with('sukses', 'data berhasil diupload');
+//
+//        // pindah file dari form ke folder laravel
+//        $project->move($folder, $file);
+//
+//
+////        NAMA FOLDER FOTO
+//        $foto = 'photoproject';
+//
+////        FOTO PERTAMA
+//        $photo1 = $request->file('photo1');
+////        // nama file yang disimpan ke folder public
+//        $poto1 = time() . "_" . $photo1->getClientOriginalName();
+//
+////        // pindah file dari form ke folder laravel
+//        $photo1->move($foto, $poto1);
+//
+//
+////        FOTO KEDUA
+//        $photo2 = $request->file('photo2');
+//        // nama file yang disimpan ke folder public
+//        $poto2 = time() . "_" . $photo2->getClientOriginalName();
+//
+////        // pindah file dari form ke folder laravel
+//        $photo2->move($foto, $poto2);
+//
+//
+////        FOTOKETIGA
+//        $photo3 = $request->file('photo3');
+//        // nama file yang disimpan ke folder public
+//        $poto3 = time() . "_" . $photo3->getClientOriginalName();
+//
+////        // pindah file dari form ke folder laravel
+//        $photo3->move($foto, $poto3);
+//
+////        FOTO KEEMPAT
+//        $photo4 = $request->file('photo4');
+////        nama file yang disimpan ke folder public
+//        $poto4 = time() . "_" . $photo4->getClientOriginalName();
+////
+////        pindah file dari form ke folder laravel
+//        $photo4->move($foto, $poto4);
+//
+//
+//
+//
+//        $id = Auth::user();
+//        DB::table('post_contents')->insert([
+//            'TITLE' => $request->TITLE,
+//            'platfotm' => $request->platform,
+//            'Descripstion' => $request->Description,
+//            'photo1' => $poto1,
+//            'photo2' => $poto2,
+//            'photo3' => $poto3,
+//            'photo4' => $poto4,
+//            'link_project'=> $file,
+//            'user_id' => $id->id,
+//            'file_size' => $file->getSize(),
+//        ]);
+//        return view('/home')->with('sukses', 'data berhasil diupload');
     }
 
     public function addpost()
